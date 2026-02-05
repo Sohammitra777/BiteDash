@@ -5,3 +5,5 @@ export interface OrderRepository {
     findById(id: string): Order | undefined;
     updateStatus(id: string, status: OrderStatus): Order | undefined;
 }
+
+'api/order'

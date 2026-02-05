@@ -47,25 +47,34 @@ export default function Checkout() {
             <h2 className="font-semibold mb-2">Checkout</h2>
 
             <input
+                type="text"
                 placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                pattern="[A-Za-z ]+"
+                title="Name should contain letters only"
                 required
                 className="w-full border rounded p-2 mb-2"
             />
 
             <input
+                type="text"
                 placeholder="Address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
+                pattern="[A-Za-z0-9 ,.#/-]+"
+                title="Enter a valid address"
                 required
                 className="w-full border rounded p-2 mb-2"
             />
 
             <input
+                type="tel"
                 placeholder="Phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                pattern="[0-9]{10,15}"
+                title="Phone number must be 10–15 digits"
                 required
                 className="w-full border rounded p-2 mb-2"
             />

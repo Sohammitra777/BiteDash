@@ -15,5 +15,5 @@ export function startOrderStatusSimulation(orderId: string) {
         }
 
         orderRepo.updateStatus(orderId, statusFlow[index]);
-    }, 10000);
+    }, 5000);
 }

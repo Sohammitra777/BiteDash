@@ -10,5 +10,5 @@ test('shows empty cart message', () => {
         </CartProvider>
     );
 
-    expect(screen.getByText(/cart is empty/i)).toBeInTheDocument();
+    expect(screen.getByText(/Add Items/i)).toBeInTheDocument();
 });
