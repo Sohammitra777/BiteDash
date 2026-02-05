@@ -1,4 +1,4 @@
-# 🍟 SnackStack 🥤
+# 🍟 BiteDash🥤
 
 A simple **food ordering & order tracking** feature built as a **full-stack Next.js** application 🚀
 The goal of this project was to deliver a **complete, working order flow** with clean architecture 🧱, clear API design 🔌, and pragmatic testing 🧪 — all within a limited timeframe ⏱️.
