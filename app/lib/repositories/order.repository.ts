@@ -1,4 +1,4 @@
-import { Order, OrderStatus } from "../types";
+import { Order, OrderStatus } from '../types';
 
 export interface OrderRepository {
     create(order: Order): Order;

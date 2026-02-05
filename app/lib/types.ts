@@ -1,4 +1,4 @@
-export type MenuItems = {
+export type MenuItem = {
     id: string;
     name: string;
     description: string;
@@ -6,16 +6,12 @@ export type MenuItems = {
     image: string;
 };
 
-export type CartItems = {
-    item: MenuItems;
+export type CartItem = {
+    item: MenuItem;
     quantity: number;
 };
 
-export type OrderStatus =
-    | "RECEIVED"
-    | "PREPARING"
-    | "OUT_FOR_DELIVERY"
-    | "DELIVERED";
+export type OrderStatus = 'RECEIVED' | 'PREPARING' | 'OUT_FOR_DELIVERY' | 'DELIVERED';
 
 export type CustomerInfo = {
     name: string;
@@ -25,7 +21,7 @@ export type CustomerInfo = {
 
 export type Order = {
     id: string;
-    items: CartItems;
+    items: CartItem[];
     customer: CustomerInfo;
     status: OrderStatus;
     createdAt: Date;

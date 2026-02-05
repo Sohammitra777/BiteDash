@@ -1,5 +1,5 @@
-import { Order, OrderStatus } from "../types";
-import { OrderRepository } from "./order.repository";
+import { Order, OrderStatus } from '../types';
+import { OrderRepository } from './order.repository';
 
 class InMemoryOrderRepository implements OrderRepository {
     private orders = new Map<string, Order>();

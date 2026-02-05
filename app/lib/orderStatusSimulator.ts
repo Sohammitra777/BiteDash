@@ -1,15 +1,10 @@
-import { orderRepo } from "./repositories/order.memory";
-import { OrderStatus } from "./types";
+import { orderRepo } from './repositories/order.memory';
+import { OrderStatus } from './types';
 
-const statusFlow: OrderStatus[] = [
-    "RECEIVED",
-    "PREPARING",
-    "OUT_FOR_DELIVERY",
-    "DELIVERED",
-];
+const statusFlow: OrderStatus[] = ['RECEIVED', 'PREPARING', 'OUT_FOR_DELIVERY', 'DELIVERED'];
 
 export function startOrderStatusSimulation(orderId: string) {
-    let index = 0;
+    let index = -1;
 
     const interval = setInterval(() => {
         index++;

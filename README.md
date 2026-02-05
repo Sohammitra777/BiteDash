@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SnackStack
 
-## Getting Started
+A simple food ordering and order tracking feature built as a full-stack Next.js application. The goal of this project was to deliver a complete, working order flow with a clean architecture, clear API design, and pragmatic testing within a limited timeframe.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js (App Router)** – Full-stack framework used for UI and API routes
+- **TypeScript** – Strong typing across frontend, backend, and tests
+- **Tailwind CSS** – Utility-first styling for fast and consistent UI development
+- **Vitest** – Lightweight and fast testing framework
+- **Zod** – Runtime validation for API input safety
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+- **Menu Browsing**
+    - Displays a list of food items with name, description, price, and image
+    - Menu data served via a REST API
 
-To learn more about Next.js, take a look at the following resources:
+- **Cart & Checkout**
+    - Add/remove items from the cart
+    - Update item quantities
+    - Simple checkout form for delivery details
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Order Placement**
+    - Places an order via a REST API
+    - Validates payloads before processing
+    - Stores order data in an in-memory repository
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Order Status Tracking**
+    - Order lifecycle: `RECEIVED → PREPARING → OUT_FOR_DELIVERY → DELIVERED`
+    - Status updates are simulated on the backend
+    - The client polls the API to simulate real-time updates
+    - Order status updates every 10 seconds — please wait a few moments to see the status change
 
-## Deploy on Vercel
+- **REST APIs**
+    - `GET /api/menu` – Retrieve menu items
+    - `POST /api/orders` – Place an order
+    - `GET /api/orders/:id` – Retrieve order status
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Input Validation**
+    - Zod schemas ensure invalid data never reaches business logic
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Automated Tests**
+    - Unit tests for API endpoints and critical logic
+    - Minimal UI tests for key user interactions
+
+---
+
+## Architecture
+
+- **Full-Stack Next.js**
+    - Frontend and backend live in a single codebase
+    - Eliminates CORS issues and simplifies deployment
+
+- **Repository Pattern**
+    - Orders are stored via an abstract repository
+    - Current implementation uses an in-memory store
+    - Designed to be easily replaced with a database later
+
+- **API Layer**
+    - Route handlers act as controllers
+    - Business logic kept separate from request handling
+
+- **Real-Time Simulation**
+    - Backend simulates order status progression using timers
+    - Frontend polls the API to reflect updates
+
+---
+
+## Testing Strategy
+
+- **30/70 Rule**
+    - Focus on testing what can break the system rather than exhaustive coverage
+
+- **What Is Tested**
+    - Order creation
+    - Payload validation
+    - Order retrieval
+    - Order lifecycle behavior
+
+- **What Is Intentionally Not Over-Tested**
+    - Styling and layout
+    - Static UI rendering
+    - Non-critical interactions
+
+This keeps the test suite fast, meaningful, and maintainable.
+
+---
+
+## Trade-offs & Future Improvements
+
+- **Persistence**
+    - Replace the in-memory store with a database (e.g., Postgres + Drizzle)
+
+- **Real-Time Updates**
+    - Use WebSockets or Server-Sent Events instead of polling
+
+- **Authentication**
+    - Add user accounts and order history
+
+- **Scalability**
+    - Background job processing for order updates
+    - Better error handling and retry mechanisms
+
+---
+
+# Thank You
+
+> Thank you for visiting and checking out my project.
